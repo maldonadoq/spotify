@@ -5,4 +5,4 @@
  * @author maldonado
  *
  */
-package model;
+package spotify.model;

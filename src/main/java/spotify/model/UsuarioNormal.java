@@ -1,4 +1,4 @@
-package model;
+package spotify.model;
 
 import java.util.List;
 
@@ -27,13 +27,5 @@ public class UsuarioNormal extends Usuario{
 
 	public void setEstado(Boolean estado) {
 		Estado = estado;
-	}
-
-	public List<UsuarioNormal> getSigue() {
-		return Sigue;
-	}
-
-	public void setSigue(List<UsuarioNormal> sigue) {
-		Sigue = sigue;
 	}
 }

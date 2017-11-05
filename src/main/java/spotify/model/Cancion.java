@@ -1,17 +1,13 @@
-package model;
+package spotify.model;
 
 import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 
 @Entity
 public class Cancion {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer Id_cancion;
 	
 	@Column(length = 32, nullable = false)
