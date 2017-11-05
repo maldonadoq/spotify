@@ -1,9 +1,13 @@
 package spotify.model;
 
+import java.util.Set;
+
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Cancion {
@@ -19,6 +23,17 @@ public class Cancion {
 	private String Letra;
 	
 	private Integer Puntuacion;
+		
+	@ManyToMany(targetEntity=Playlist.class)
+	private Set playlistSet;
+	
+	@ManyToOne
+	private Album album;
+	
+	@ManyToMany(targetEntity=Artista.class)
+	private Set artistaSet;
+	
+	
 
 	public Integer getId_cancion() {
 		return Id_cancion;
