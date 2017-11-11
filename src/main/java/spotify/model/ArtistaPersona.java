@@ -1,10 +1,10 @@
 package spotify.model;
 
-import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "Artista")
@@ -13,7 +13,7 @@ public abstract class ArtistaPersona {
 	@Id
 	private Integer Id_artista;
 	
-	@Column(name ="Nombre", lenght = 64, nullable = false)
+	@Column(name ="Nombre", length = 64, nullable = false)
 	private String Nombre;
 	
 	@Column(name = "Ap_pat" ,length = 64, nullable = false)

@@ -16,7 +16,7 @@ public abstract class Artista {
 	@Column(name = "Nom_Artista", length = 64, nullable  = false)
 	public String Nom_Artista;
 
-	@ManyToMany(targetEntity = Artista.Persona.class)
+	@ManyToMany(targetEntity = ArtistaPersona.class)
 	private Set artistasSet;
 
 	public Integer getId_artista() {
