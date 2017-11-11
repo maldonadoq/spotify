@@ -2,7 +2,7 @@
  * 
  */
 /**
- * @author maldonado
+ * @author Dave
  *
  */
 package spotify.model;
