@@ -1,5 +1,11 @@
 package spotify.model;
 
+import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
 @Entity
 @Table(name = "Artista")
 public abstract class ArtistaPersona {
@@ -17,7 +23,10 @@ public abstract class ArtistaPersona {
 	@Column(name = "Ap_mat" ,length = 64, nullable = false)
 	private String ApellidoMaterno;
 
-
+	//Un cantante forma parte de una banda.
+	@ManyToOne
+	private Artista artista;
+	
 	public Integer getId_artista() {
 		return Id_artista;
 	}
