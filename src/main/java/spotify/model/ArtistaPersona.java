@@ -1,17 +1,20 @@
 package spotify.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Artista")
 public abstract class ArtistaPersona {
 	//Cada artista unitario posee un ID
 	@Id
-	private Integer Id_artista;
+	private Integer Id_artista_persona;
 	
 	@Column(name ="Nombre", length = 64, nullable = false)
 	private String Nombre;
@@ -27,13 +30,35 @@ public abstract class ArtistaPersona {
 	@ManyToOne
 	private Artista artista;
 	
-	public Integer getId_artista() {
-		return Id_artista;
+	@ManyToMany(mappedBy="artistasPersona")
+	private Set<Artista> artistas = new HashSet<Artista>();
+	
+	
+	
+	
+
+	public Integer getId_artista_persona() {
+		return Id_artista_persona;
 	}
 
+	public void setId_artista_persona(Integer id_artista_persona) {
+		Id_artista_persona = id_artista_persona;
+	}
 
-	public void setId_artista(Integer id_artista) {
-		Id_artista = id_artista;
+	public Artista getArtista() {
+		return artista;
+	}
+
+	public void setArtista(Artista artista) {
+		this.artista = artista;
+	}
+
+	public Set<Artista> getArtistas() {
+		return artistas;
+	}
+
+	public void setArtistas(Set<Artista> artistas) {
+		this.artistas = artistas;
 	}
 
 
