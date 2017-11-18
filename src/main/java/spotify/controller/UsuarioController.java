@@ -23,8 +23,9 @@ public class UsuarioController {
     model.addAttribute("message", message);
     return "usuario/list";
   }
-
+  
   @RequestMapping("/{idUsuarioNormal}")
+  @ResponseBody
   public String editarUsuario(ModelMap model, @PathVariable("idUsuarioNormal") String codigo) {
     UsuarioNormal usuario = usuarioService.getById_usuario(codigo);
     model.addAttribute("usuario", usuario);
