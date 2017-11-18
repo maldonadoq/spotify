@@ -7,7 +7,7 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.Table;
 
 @MappedSuperclass
-public abstract class Usuario {
+public abstract class Usuario{
 	
 	@Column(length = 64, nullable = false)
 	protected String Nombre;
@@ -20,9 +20,6 @@ public abstract class Usuario {
 	
 	@Column(length = 64, nullable = false)
 	protected String Correo;
-
-	
-	
 
 	public String getNombre() {
 		return Nombre;

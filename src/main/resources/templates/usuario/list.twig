@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Listado de Usuarios</title>
+  </head>
+  <body>
+
+ {% if (message) %}
+ <div style="color: green; border: 1px solid green; margin-bottom:10px;">{{message}}</div>
+ {% endif %}
+
+	<table border="1">
+	  <tr>
+	    <th>ID</th>
+	    <th>Apellidos</th>
+	    <th>Nombres</th>
+	    <th>Correo</th>
+	  </tr>
+
+{% for usuario in usuarios %}
+	  <tr>
+	    <td><a href="/usuario/{{usuario.idUsuarioNormal}}">{{usuario.idUsuarioNormal}}</a></td>
+	    <td>{{usuario.ApellidoPaterno}} {{usuario.ApellidoMaterno}}</td>
+	    <td>{{usuario.Nombre}}</td>
+	    <td>{{usuario.Correo}}</td>
+	  </tr>
+{% endfor %}
+	</table>
+	<br />
+	<a href="/usuario/new">Agregar Nuevo</a>
+  </body>
+</html>

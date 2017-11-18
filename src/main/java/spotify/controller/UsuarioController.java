@@ -5,46 +5,46 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-import spotify.model.Usuario;
+import spotify.model.UsuarioNormal;
 import spotify.service.UsuarioService;
 
 @Controller
-@RequestMapping("/Usuario")
+@RequestMapping("/usuario")
 public class UsuarioController {
 
   @Autowired
-  UsuarioService UsuarioService;
+  UsuarioService usuarioService;
 
   @RequestMapping
   public String listarUsuarios(ModelMap model,
       @RequestParam(value = "message", required = false) String message) {
-    List<Usuario> Usuarios = UsuarioService.getAll();
-    model.addAttribute("Usuarios", Usuarios);
+    List<UsuarioNormal> usuarios = usuarioService.getAll();
+    model.addAttribute("usuarios", usuarios);
     model.addAttribute("message", message);
-    return "Usuario/list";
+    return "usuario/list";
   }
 
-  @RequestMapping("/{codigo}")
-  public String editarUsuario(ModelMap model, @PathVariable("codigo") String codigo) {
-    Usuario Usuario = UsuarioService.getByCodigo(codigo);
-    model.addAttribute("Usuario", Usuario);
-    model.addAttribute("fullName", String.format("%s/%s, %s", Usuario.getApellidoPaterno(),
-        Usuario.getApellidoMaterno(), Usuario.getNombres()));
-    return "Usuario/editar";
+  @RequestMapping("/{idUsuarioNormal}")
+  public String editarUsuario(ModelMap model, @PathVariable("idUsuarioNormal") String codigo) {
+    UsuarioNormal usuario = usuarioService.getById_usuario(codigo);
+    model.addAttribute("usuario", usuario);
+    model.addAttribute("fullName", String.format("%s/%s, %s", usuario.getApellidoPaterno(),
+        usuario.getApellidoMaterno(), usuario.getNombre()));
+    return "usuario/editar";
   }
 
   @RequestMapping("/new")
   public String nuevoUsuario(ModelMap model) {
-    Usuario Usuario = new Usuario();
-    model.addAttribute("Usuario", Usuario);
-    model.addAttribute("title", "Nuevo Usuario");
-    return "Usuario/editar";
+    UsuarioNormal usuario = new UsuarioNormal();
+    model.addAttribute("usuario", usuario);
+    model.addAttribute("title", "Nuevo Usuario");	
+    return "usuario/editar";
   }
 
   @RequestMapping(value = "/save", method = RequestMethod.POST)
-  public String saveUsuario(@ModelAttribute Usuario UsuarioChanged, ModelMap model) {
-    UsuarioService.save(UsuarioChanged);
-    return "redirect:/Usuario?message=El Usuario se actualizo correctamente";
+  public String saveUsuario(@ModelAttribute UsuarioNormal usuarioChanged, ModelMap model) {
+    usuarioService.save(usuarioChanged);
+    return "redirect:/usuario?message=El Usuario se actualizo correctamente";
     // return listarUsuarios(model);
   }
 
