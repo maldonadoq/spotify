@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Listado de Canciones</title>
+  </head>
+  <body>
+
+ {% if (message) %}
+ <div style="color: green; border: 1px solid green; margin-bottom:10px;">{{message}}</div>
+ {% endif %}
+
+	<table border="1">
+	  <tr>
+	    <th>ID</th>
+	    <th>Nombre</th>
+	    <th>Fecha</th>
+	    <th>Puntuacion</th>
+	  </tr>
+
+{% for cancion in canciones %}
+	  <tr>
+	    <td>{{cancion.Id_cancion}}</a></td>
+	    <td>{{cancion.Nombre}} {{usuario.ApellidoMaterno}}</td>
+	    <td>{{cancion.Fecha}}</td>
+	    <td>{{cancion.Puntuacion}}</td>
+	  </tr>
+{% endfor %}
+	</table>
+	
+	<!--<form action="/cancion/{{Be}}", method = get>
+		Buscar Cancion:<br>
+  		<input type="text" name="Nombre"><br>
+		<input type="submit" value="Buscar">
+	</form>-->
+	<br />	<a href="/cancion/search/{{"Bed"}}">Buscar</a>
+	<br />	<a href="/cancion/album/{{"Z"}}">Buscar Album</a>
+	<br /> <input type="button" value="Back" onclick="history.back();" />
+  </body>
+</html>

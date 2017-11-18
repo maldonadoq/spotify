@@ -35,7 +35,6 @@ public class Album {
 	
 	@OneToMany(mappedBy="album")
 	private List<Cancion> canciones = new ArrayList<Cancion>();
-
 	
 	
 	

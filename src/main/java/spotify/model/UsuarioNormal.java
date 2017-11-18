@@ -15,9 +15,10 @@ import javax.persistence.JoinTable;
 @Entity
 public class UsuarioNormal extends Usuario{
 	@Id
-	private int idUsuarioNormal;
+	@Column(length = 64, nullable = false)
+	private String idUsuarioNormal;
 	
-	@Column(nullable = false)
+	//@Column(nullable = false)
 	private Boolean Estado;
 	
 	@OneToMany(mappedBy="usuarioNormal")
@@ -51,11 +52,11 @@ public class UsuarioNormal extends Usuario{
 		this.playlists = playlists;
 	}
 
-	public int getIdUsuarioNormal() {
+	public String getIdUsuarioNormal() {
 		return idUsuarioNormal;
 	}
 
-	public void setIdUsuarioNormal(int idUsuarioNormal) {
+	public void setIdUsuarioNormal(String idUsuarioNormal) {
 		this.idUsuarioNormal = idUsuarioNormal;
 	}
 
