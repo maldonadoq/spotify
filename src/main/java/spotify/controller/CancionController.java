@@ -28,9 +28,16 @@ public class CancionController {
 	  }
 	
 	//@RequestMapping(value = "/{Nombre}", method = RequestMethod.GET)
-	@RequestMapping("/{Nombre}")
-	  public String mathCanciones(ModelMap model, @PathVariable("Nombre") String name) {
+	@RequestMapping("/search/{Nombre}")
+	  public String matchCanciones(ModelMap model, @PathVariable("Nombre") String name) {
 		List<Cancion> canciones = cancionService.getMatchName(name);
+	    model.addAttribute("canciones", canciones);
+	    return "cancion/list";
+	  }
+	
+	@RequestMapping("/album/{nombreAlbum}")
+	  public String albumCanciones(ModelMap model, @PathVariable("nombreAlbum") String name) {
+		List<Cancion> canciones = cancionService.getAlbumName(name);
 	    model.addAttribute("canciones", canciones);
 	    return "cancion/list";
 	  }

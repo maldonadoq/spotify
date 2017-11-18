@@ -45,10 +45,6 @@ public class Cancion {
 	@JoinColumn(name="fk_album")
 	private Album album;
 	
-	
-	
-	
-
 	public Set<Playlist> getPlaylists() {
 		return playlists;
 	}
