@@ -3,33 +3,23 @@ package spotify.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "Usuarios")
-public abstract class Usuario {
-	@Id 
-	private Integer Id_usuario;
+@MappedSuperclass
+public abstract class Usuario{
 	
 	@Column(length = 64, nullable = false)
-	private String Nombre;
+	protected String Nombre;
 	
 	@Column(name = "Ap_pat", length = 64, nullable = false)
-	private String ApellidoPaterno;
+	protected String ApellidoPaterno;
 	
 	@Column(name = "Ap_mat", length = 64)
-	private String ApellidoMaterno;
+	protected String ApellidoMaterno;
 	
 	@Column(length = 64, nullable = false)
-	private String Correo;
-
-	public Integer getId_usuario() {
-		return Id_usuario;
-	}
-
-	public void setId_usuario(Integer id_usuario) {
-		Id_usuario = id_usuario;
-	}
+	protected String Correo;
 
 	public String getNombre() {
 		return Nombre;
