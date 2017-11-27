@@ -1,10 +1,7 @@
 package spotify.model;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.Table;
 
 @MappedSuperclass
 public abstract class Usuario{
@@ -20,6 +17,9 @@ public abstract class Usuario{
 	
 	@Column(length = 64, nullable = false)
 	protected String Correo;
+
+	
+//----------------------GETTER AND SETTER--------------------------
 
 	public String getNombre() {
 		return Nombre;
