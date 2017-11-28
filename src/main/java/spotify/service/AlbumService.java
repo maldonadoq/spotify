@@ -9,5 +9,4 @@ import spotify.repository.AlbumRepository;
 public class AlbumService {
 	@Autowired
 	  AlbumRepository repository;
-	
 }
