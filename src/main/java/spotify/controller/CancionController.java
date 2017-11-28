@@ -5,11 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import spotify.model.Cancion;
+import spotify.model.Post;
 import spotify.service.CancionService;
 
 @Controller
@@ -27,17 +30,17 @@ public class CancionController {
 	    return "cancion/list";
 	  }
 	
-	//@RequestMapping(value = "/{Nombre}", method = RequestMethod.GET)
-	@RequestMapping("/search/{Nombre}")
-	  public String matchCanciones(ModelMap model, @PathVariable("Nombre") String name) {
-		List<Cancion> canciones = cancionService.getMatchName(name);
+
+	@RequestMapping(value = "/search", method = RequestMethod.POST)
+	  public String matchCanciones(@ModelAttribute Post postChanged, ModelMap model){
+		List<Cancion> canciones = cancionService.getMatchName(postChanged.getVar1());
 	    model.addAttribute("canciones", canciones);
 	    return "cancion/list";
-	  }
-	
-	@RequestMapping("/album/{nombreAlbum}")
-	  public String albumCanciones(ModelMap model, @PathVariable("nombreAlbum") String name) {
-		List<Cancion> canciones = cancionService.getAlbumName(name);
+	  }	
+
+	@RequestMapping(value = "/album", method = RequestMethod.POST)
+	  public String albumCanciones(@ModelAttribute Post postChanged, ModelMap model) {
+		List<Cancion> canciones = cancionService.getAlbumName(postChanged.getVar1());
 	    model.addAttribute("canciones", canciones);
 	    return "cancion/list";
 	  }

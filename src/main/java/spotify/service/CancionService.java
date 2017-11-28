@@ -27,6 +27,7 @@ public class CancionService{
 	  
 	  public List<Cancion> getAlbumName(String name){
 		  Album tmp = arepository.findAlbumName(name);
-		  return repository.findAlbumCodigo(tmp.nombreAlbum);
+		  if(tmp == null)	return repository.findAlbumCodigo("-");
+		  return repository.findAlbumCodigo(tmp.idAlbum);
 	  }
 }
