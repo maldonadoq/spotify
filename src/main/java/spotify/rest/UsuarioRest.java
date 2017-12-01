@@ -1,31 +1,30 @@
 package spotify.rest;
 
-import spotify.model.Usuario;
+import spotify.model.UsuarioNormal;
 import spotify.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/Usuario")
+@RequestMapping("/usuario")
 public class UsuarioRest {
 
     @Autowired
-    UsuarioService UsuarioService;
+    UsuarioService usuarioService;
 
     @RequestMapping("/listar.json")
     @ResponseBody
-    public List<Usuario> listarUsuarios() {
-        List<Usuario> Usuarios = UsuarioService.getAll();
-        return Usuarios;
+    public List<UsuarioNormal> listarUsuarios() {
+        List<UsuarioNormal> usuarios = usuarioService.getAll();
+        return usuarios;
     }
 
-    @RequestMapping("/{Id_usuario}.json")
+    @RequestMapping("/{idUsuarioNormal}.json")
     @ResponseBody
-    public Usuario Usuario(@PathVariable("Id_usuario") String Id_usuario) {
-        Usuario Usuario = UsuarioService.getById_usuario(Id_usuario);
-        return Usuario;
+    public UsuarioNormal usuarioNormal(@PathVariable("idUsuarioNormal") String Id_usuario) {
+        UsuarioNormal usuarioNormal = usuarioService.getById_usuario(Id_usuario);
+        return usuarioNormal;
     }
 }

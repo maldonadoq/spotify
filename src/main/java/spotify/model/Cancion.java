@@ -3,9 +3,14 @@ package spotify.model;
 import java.util.Set;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.ManyToMany;
 
@@ -13,7 +18,7 @@ import javax.persistence.ManyToMany;
 public class Cancion {
 	@Id
 	private Integer Id_cancion;
-	
+		
 	@Column(length = 32, nullable = false)
 	private String Nombre;
 	
@@ -24,16 +29,45 @@ public class Cancion {
 	
 	private Integer Puntuacion;
 		
-	@ManyToMany(targetEntity=Playlist.class)
-	private Set playlistSet;
+	@ManyToMany
+	@JoinTable(name="cancion_playlist",
+	joinColumns=@JoinColumn(name="id_cancion"),
+	inverseJoinColumns=@JoinColumn(name="id_playlist"))
+	private Set<Playlist> playlists = new HashSet<Playlist>();
+	
+	@ManyToMany
+	@JoinTable(name="ancion_artista",
+	joinColumns=@JoinColumn(name="id_cancion"),
+	inverseJoinColumns=@JoinColumn(name="id_artista"))
+	private Set<Artista> artistas = new HashSet<Artista>();
 	
 	@ManyToOne
+	@JoinColumn(name="fk_album")
 	private Album album;
 	
-	@ManyToMany(targetEntity=Artista.class)
-	private Set artistaSet;
-	
-	
+	public Set<Playlist> getPlaylists() {
+		return playlists;
+	}
+
+	public void setPlaylists(Set<Playlist> playlists) {
+		this.playlists = playlists;
+	}
+
+	public Set<Artista> getArtistas() {
+		return artistas;
+	}
+
+	public void setArtistas(Set<Artista> artistas) {
+		this.artistas = artistas;
+	}
+
+	public Album getAlbum() {
+		return album;
+	}
+
+	public void setAlbum(Album album) {
+		this.album = album;
+	}
 
 	public Integer getId_cancion() {
 		return Id_cancion;
