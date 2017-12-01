@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+
+import spotify.model.Post;
 import spotify.model.UsuarioNormal;
 import spotify.service.UsuarioService;
 
@@ -46,6 +48,18 @@ public class UsuarioController {
     usuarioService.save(usuarioChanged);
     return "redirect:/usuario?message=El Usuario se actualizo correctamente";
     // return listarUsuarios(model);
+  }
+  
+  @RequestMapping("/searchCode")
+  public String paginaBuscarCodigo(ModelMap model) {
+    return "usuario/searchUserCode";
+  }
+  
+  @RequestMapping(value="/search", method = RequestMethod.POST)
+  public String buscarCodigo(@ModelAttribute Post postChanged, ModelMap model) {
+	UsuarioNormal usuario = usuarioService.getById_usuario(postChanged.getVar1());
+	model.addAttribute("usuario", usuario);
+    return "usuario/editar";
   }
 
 }
