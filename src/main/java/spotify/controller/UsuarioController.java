@@ -58,6 +58,10 @@ public class UsuarioController {
   @RequestMapping(value="/search", method = RequestMethod.POST)
   public String buscarCodigo(@ModelAttribute Post postChanged, ModelMap model) {
 	UsuarioNormal usuario = usuarioService.getById_usuario(postChanged.getVar1());
+	List<UsuarioNormal> usuarios = usuarioService.getAll();
+	if (!usuarios.contains(usuario)) {
+		return "redirect:/usuario?message=No se encuentra el Usuario.";
+	}
 	model.addAttribute("usuario", usuario);
     return "usuario/editar";
   }
