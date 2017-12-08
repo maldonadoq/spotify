@@ -48,11 +48,6 @@ public class UsuarioController {
     return "redirect:/usuario?message=El Usuario se actualizo correctamente";
     // return listarUsuarios(model);
   }
-  
-  @RequestMapping("/login")
-  public String Login(ModelMap model) {
-	  return "usuario/login";
-  }
 
   @RequestMapping("/register")
   public String Register(ModelMap model) {
