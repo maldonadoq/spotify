@@ -101,6 +101,39 @@ button {
 
 <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Sign Up</button>
 
+<button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Sign In</button>
+
+<div id="id02" class="modal">
+	<span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">x</span>
+	<form class="modal-content animate" action="login">
+		<div class="container">
+			<label><b>Correo: </b></label>
+			<input type="text" placeholder="Ingresa tu correo" name="Correo" required="required"/>
+		
+			<label><b>Password: </b></label>
+			<input type="password" placeholder="Ingresa tu password" name="idUsuarioNormal" required="required"/>
+
+      		<div class="clearfix">
+        		<button type="submit" class="signupbtn">Ingresar</button>
+        		<button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+      		</div>			
+		</div>
+	</form>
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById('id02');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+
+
 <div id="id01" class="modal">
   <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
   <form class="modal-content animate" action="save" method="POST">
