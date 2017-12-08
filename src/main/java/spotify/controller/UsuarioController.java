@@ -47,5 +47,4 @@ public class UsuarioController {
     return "redirect:/usuario?message=El Usuario se actualizo correctamente";
     // return listarUsuarios(model);
   }
-
 }

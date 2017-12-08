@@ -21,25 +21,20 @@
       color: #FFFFFF;
     }
 
-    .navbar-inverse {
-      color: red;
-    }
-    
-	.carousel-inner img {
-	  width: 100%;
-	  margin: auto;
-	  min-height:200px;
-	}
-
 	body{
       background: #000000;
   	}
-
-  @media (max-width: 600px) {
-    .carousel-caption {
-      display: none; 
+  	
+  	#reproductorBox{
+      width: 50%;
+      
+      text-align: center;
+      background: #000000;
     }
-  }
+
+    #selectTrack{
+      text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -56,13 +51,9 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li><a href="/spotify/about" class="text-dark">About</a></li>
+        <li><a href="#" class="text-dark">About</a></li>
         <li><a href="#" class="text-dark">Projects</a></li>
         <li><a href="#" class="text-dark">Contact</a></li>
-      </ul>
-
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       </ul>
     </div>
   </div>
@@ -72,19 +63,12 @@
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
       <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
     </ol>
 
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
       <div class="item active">
         <img src="https://www.merlot.org/merlot/images/portals/music_banner_1.jpg" alt="Image" height="200">
-        <div class="carousel-caption">
-        </div>      
-      </div>
-
-      <div class="item">
-        <img src="https://i.pinimg.com/736x/e5/7e/4e/e57e4ebde6f5712b0d493498e4d45965--love-drawings-i-love.jpg" alt="Image" height="200">
         <div class="carousel-caption">
         </div>      
       </div>
@@ -106,40 +90,59 @@
       <span class="sr-only">Next</span>
     </a>
 </div>
-  
-<div class="container text-center"><br>
-  <div class="row">
-    <div class="col-sm-4">
-      <a href="#"> <img src="https://i.scdn.co/image/09cc3e6c45ddcc65d30d076be58797a38c0f77a1" alt="Image" height="250" width="320"> </a>
-      <h4>Rock</h4>
-    </div>
+<br>
 
-    <div class="col-sm-4"> 
-      <a href="#"> <img src="https://pl.scdn.co/images/pl/default/7fdd4d946d633dfd2e7b1ba548716c22420b0d16" alt="Image" height="250" width="320"> </a>
-      <h4>Baladas</h4>
-    </div>
-
-    <div class="col-sm-4">
-      <a href="#"> <img src="https://i.scdn.co/image/42fa193f92cb941a663410262b449230fb876860" alt="Image" height="250" width="320"> </a>
-      <h4>Metal</h4>
-    </div>
-
-    <div class="col-sm-4">
-      <a href="#"> <img src="https://i.scdn.co/image/16a14110300dc8f494a194ff154d40bf717645a7" alt="Image" height="250" width="320"> </a>
-      <h4>Rock Español</h4>
-    </div>
-
-    <div class="col-sm-4">
-      <a href="#"> <img src="http://www.radiotaino.cu/web/imagesNoti/99558_boleros_RTaino.jpg" alt="Image" height="250" width="320"> </a>
-      <h4>Boleros</h4>
-    </div>
-
-    <div class="col-sm-4">
-      <a href="#"> <img src="https://u.scdn.co/images/pl/default/f4918621c0e8b3be442e4193b82ed3a4a3e60af6" alt="Image" height="250" width="320"> </a>
-      <h4>Bachata</h4>
-    </div>
-  </div>
+<div class="container text-center">    
+  <h3>
+  	Bienvenido a Spotify. Nuestro objetivo es proporcionar acceso a todas las canciones que actualmente existe.
+    Con Spotify, es f&aacute;cil encontrar la mejor m&uacute;sica para cada momento desde el celular, computadora, tablet y mucho m&aacute;s. Elige lo que quieras escuchar o deja que Spotify te sorprenda.
+  </h3><br>
 </div><br>
+
+<script>
+function cambiarTrack(track){
+  var path =  track.getAttribute("path")
+  old_audio = document.getElementById("reproductor")
+  father_audio = old_audio.parentNode
+  father_audio.removeChild(old_audio)
+  new_audio = document.createElement("audio")
+  new_audio.setAttribute("id","reproductor")
+  new_audio.setAttribute("controls", "controls")
+  new_audio.setAttribute("autoplay", "autoplay")
+  source = document.createElement("source")
+  source.setAttribute("src", path)
+  source.setAttribute("type", "audio/mpeg")
+  source.setAttribute("id", "reproductorSource")
+  new_audio.appendChild(source)
+  father_audio.appendChild(new_audio)
+}
+
+function cargarReproductor(){
+  var select = document.getElementById("selectTrack")
+  var path = select.options[0].getAttribute("path")
+
+  audio = document.createElement("audio")
+  audio.setAttribute("id","reproductor")
+  audio.setAttribute("controls", "controls")       
+  source = document.createElement("source")
+  source.setAttribute("src", path)
+  source.setAttribute("type", "audio/mpeg")
+  source.setAttribute("id", "reproductorSource")
+  audio.appendChild(source)
+  padre = document.getElementById("reproductorBox")
+  padre.appendChild(audio)
+}
+</script>
+
+<div id="reproductorBox">
+<select id = "selectTrack" multiple onchange="cambiarTrack(this.options[this.selectedIndex]);">
+  <option path="../music/alter bridge_metalingus.mp3">Ah Ah - Take on me</option>
+  <option path="../music/alter bridge_metalingus.mp3">Kansas - Dust in the wind</option>
+  <option path="../music/alter bridge_metalingus.mp3">Bee Geees - How deep is your love</option>
+</select>
+<script>cargarReproductor();</script>
+</div>
+
 <footer class="container-fluid text-center">
   <p>Maldonado - Cerpa - Mamani - Nu&ntilde;ez - Anco</p>
 </footer>
