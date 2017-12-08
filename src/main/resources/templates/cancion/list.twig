@@ -16,7 +16,6 @@
 	    <th>Nombre</th>
 	    <th>Fecha</th>
 	    <th>Puntuacion</th>
-	    <th>ID Album</th>
 	  </tr>
 
 {% for cancion in canciones %}
@@ -25,7 +24,6 @@
 	    <td>{{cancion.Nombre}} {{usuario.ApellidoMaterno}}</td>
 	    <td>{{cancion.Fecha}}</td>
 	    <td>{{cancion.Puntuacion}}</td>
-	    <td>{{cancion.fk_album}}</td>
 	  </tr>
 {% endfor %}
 	</table>
@@ -35,7 +33,7 @@
 	<table border="1">
 	  <tr>	<th>Nombre:</th><td><input name="var1" /></td>	</tr>
 	</table>
-    <br> <input type="submit" value="Buscar Por Nombre]" />
+    <br> <input type="submit" value="Buscar Por Nombre" />
    </form>
    
    <br><br>
@@ -43,7 +41,7 @@
 	<table border="1">
 	  <tr>	<th>Nombre:</th><td><input name="var1" /></td>	</tr>
 	</table>
-    <br> <input type="submit" value="Buscar Por Album]" />
+    <br> <input type="submit" value="Buscar Por Album" />
    </form>
 
 	<br /> <input type="button" value="Back" onclick="history.back();" />

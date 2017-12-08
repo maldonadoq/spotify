@@ -65,5 +65,4 @@ public class UsuarioController {
 	model.addAttribute("usuario", usuario);
     return "usuario/editar";
   }
-
 }
