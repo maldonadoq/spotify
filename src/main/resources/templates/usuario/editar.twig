@@ -14,11 +14,8 @@
   
 	<div class="container" align="center">
 	   	
-	   <!-- <img src="https://www.dontshake.org/media/k2/items/cache/71f67488b0857639cee631943a3fc6fa_XL.jpg" class="img-responsive center-block" width="200" height="200" alt="Logo" /> -->
-	   
-	   <img src="{{ asset('images/login.png') }}" class="img-responsive center-block" width="200" height="200" alt="Logo" > 
+	   <img src="https://www.dontshake.org/media/k2/items/cache/71f67488b0857639cee631943a3fc6fa_XL.jpg" class="img-responsive center-block" width="200" height="200" alt="Logo" />
 
-	   
 	   <form action="save" method="POST">
 		<table border="1">
 		  <tr>
@@ -27,7 +24,7 @@
 	 {% if (usuario.idUsuarioNormal) %}
 		    <td><input name="idUsuarioNormal" value="{{usuario.idUsuarioNormal}}" type="hidden" />{{usuario.idUsuarioNormal}}</td>
 	 {% else %}
-		    <td><input name="idUsuarioNormal" /></td>
+		    <td><input name="idUsuarioNormal"/></td>
 	 {% endif %}
 	
 		  </tr>
