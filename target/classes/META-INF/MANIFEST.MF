@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Implementation-Title: spotify
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: maldonado
+Built-By: gianc
 Implementation-Vendor-Id: com.example
 Build-Jdk: 1.8.0_151
 Implementation-URL: http://projects.spring.io/spring-boot/spotify/
