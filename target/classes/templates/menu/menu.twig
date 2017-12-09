@@ -5,6 +5,10 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  
+  <!-- Adding icon library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style> 
@@ -75,11 +79,11 @@
     .navbar {
       margin-bottom: 0;
       border-radius: 0;
-      background-color: #0D5203;
+      background-color: #002d01;
     }
     
     footer {
-      background-color: #012503;
+      background-color: #002d01;
       padding: 25px;
       color: #FFFFFF;
     }
@@ -99,35 +103,55 @@
       display: none; 
     }
   }
+  
+	.icon-bar {
+    	width: 100%; /* Full-width */
+    	background-color: #555; /* Dark-grey background */
+    	overflow: auto; /* Overflow due to float */
+	}
+	
+	.icon-bar a {
+    	float: left; /* Float links side by side */
+    	text-align: center; /* Center-align text */
+    	width: 20%; /* Equal width (5 icons with 20% width each = 100%) */
+   		padding: 12px 0; /* Some top and bottom padding */
+   	 	transition: all 0.3s ease; /* Add transition for hover effects */
+    	color: white; /* White text color */
+    	font-size: 36px; /* Increased font size */
+	}
+
+	.icon-bar a:hover {
+    	background-color: #000; /* Add a hover color */
+	}
+
+	.active {
+    	background-color: #4CAF50; /* Add an active/current color */
+	}  
+  
+  
   </style>
 </head>
 <body>
 
 <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" href="http://localhost:8080/spotify">Spotify</a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li><a href="/spotify/about" class="text-dark">About</a></li>
-        <li><a href="#" class="text-dark">Projects</a></li>
-        <li><a href="#" class="text-dark">Contact</a></li>
-        <li><a href="/usuario" class="text-dark">Usuarios</a></li>
-      </ul>
-
-      <ul class="nav navbar-nav navbar-right">
-        <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Sign Up</button>
-		<button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Sign In</button>
-      </ul>
-    </div>
-  </div>
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="http://localhost:8080/spotify">Spotify</a>
+		</div>
+		<ul class="nav navbar-nav">
+			<li class="active"><a href="http://localhost:8080/spotify"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+			<li><a href="/spotify/about"><span class="glyphicon glyphicon-envelope"></span> Nosotros</a></li>
+	  		<li><a href="#"><span class="glyphicon glyphicon-folder-open"></span> Proyectos</a></li>
+        	<li><a href="#"><span class="glyphicon glyphicon-comment"></span> Contactanos</a></li>
+      		<li><a href="/usuario"><span class="glyphicon glyphicon-search"></span> Usuarios</a></li>     	
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			<li><a onclick="document.getElementById('id01').style.display='block'" style="width:auto;"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+			<li><a onclick="document.getElementById('id02').style.display='block'" style="width:auto;"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+		</ul>
+	</div>
 </nav>
+
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -139,20 +163,26 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
       <div class="item active">
-        <img src="https://www.merlot.org/merlot/images/portals/music_banner_1.jpg" alt="Image" height="200">
+        <img src="http://rentapro.com.br/wp-content/uploads/2013/10/Banner-Mu%CC%81sica.jpg" alt="Image" style="width:100%;height:560px" />
         <div class="carousel-caption">
+        	<h4>First Thumbnail label</h4>
+            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
         </div>      
       </div>
 
       <div class="item">
-        <img src="https://i.pinimg.com/736x/e5/7e/4e/e57e4ebde6f5712b0d493498e4d45965--love-drawings-i-love.jpg" alt="Image" height="200">
+        <img src="http://itallstartswiththemusic.com/wp-content/uploads/2014/03/TAC-website-banner-photo.jpg" alt="Image" style="width:100%;height:560px" />
         <div class="carousel-caption">
+   	 		<h4>Second Thumbnail label</h4>
+         	<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p> 
         </div>      
       </div>
 
       <div class="item">
-        <img src="http://i.ebayimg.com/images/g/g4IAAOSwq~tZQsvA/s-l1600.jpg" alt="Image" height="200">
+        <img src="http://institutokasha.com/wp-content/uploads/2014/12/banner_piano.jpg" alt="Image" style="width:100%;height:560px" />
         <div class="carousel-caption">
+        	<h4>Third Thumbnail label</h4>
+         	<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p> 
         </div>      
       </div>
     </div>
@@ -176,7 +206,7 @@
 			<input type="text" placeholder="Ingresa tu correo" name="Correo" required="required"/>
 		
 			<label><b>Password: </b></label>
-			<input type="password" placeholder="Ingresa tu password" name="idUsuarioNormal" required="required"/>
+			<input type="password" placeholder="Ingresa tu password" name="password" required="required"/>
 
       		<div class="clearfix">
         		<button type="submit" class="signupbtn">Ingresar</button>
@@ -213,9 +243,7 @@ window.onclick = function(event) {
       <input type="text" placeholder="Ingresa tu correo" name="Correo" required="required" />
 
       <label><b>Password</b></label>
-      <input type="password" placeholder="Ingresa tu password" name="idUsuarioNormal" required="required" />
-      
-      <input type="hidden" name="Estado" value = "true" />
+      <input type="password" placeholder="Ingresa tu password" name="password" required="required" />
 
       <input type="checkbox" checked="checked"> Recuerdame...
       <p>Al suscribirte aceptas nuestros <a href="#">Terminos y condiciones</a>.</p>

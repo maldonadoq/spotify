@@ -13,7 +13,7 @@ import spotify.service.UsuarioService;
 @Controller
 @RequestMapping("/usuario")
 public class UsuarioController {
-
+	
   @Autowired
   UsuarioService usuarioService;
 
@@ -27,7 +27,7 @@ public class UsuarioController {
   }
   
   @RequestMapping("/{idUsuarioNormal}")
-  public String editarUsuario(ModelMap model, @PathVariable("idUsuarioNormal") String codigo) {
+  public String editarUsuario(ModelMap model, @PathVariable("idUsuarioNormal") Integer codigo) {
     UsuarioNormal usuario = usuarioService.getById_usuario(codigo);
     model.addAttribute("usuario", usuario);
     model.addAttribute("fullName", String.format("%s/%s, %s", usuario.getApellidoPaterno(),
@@ -45,15 +45,36 @@ public class UsuarioController {
   
   @RequestMapping(value="/perfil", method = RequestMethod.POST)
   public String perfilUsuario(@ModelAttribute UsuarioNormal usuarioChanged, ModelMap model){
-    model.addAttribute("usuario", usuarioChanged);
-    return "usuario/perfil";
+	usuarioChanged.setIdUsuarioNormal(new Integer(0));
+	String correo = usuarioChanged.getCorreo();
+	String password = usuarioChanged.getPassword();
+	boolean usuarioCorrecto = usuarioService.usuarioCorrecto(correo, password);
+	
+	if (usuarioCorrecto == true)
+	{
+		model.addAttribute("usuario", usuarioChanged);
+		return "usuario/perfil";
+	}
+	else
+		return "menu/menu";
   }
-
+  
   @RequestMapping(value = "/save", method = RequestMethod.POST)
   public String saveUsuario(@ModelAttribute UsuarioNormal usuarioChanged, ModelMap model) {
-    usuarioService.save(usuarioChanged);
-    return "redirect:/usuario?message=El Usuario se actualizo correctamente";
-    // return listarUsuarios(model);
+	String correo = usuarioChanged.getCorreo();
+	boolean existeUsuario = usuarioService.existeUsuario(correo);
+	
+	if (existeUsuario == true)
+	{
+		return "menu/menu";
+	}
+	else
+	{
+		usuarioChanged.setEstado(true);
+		usuarioChanged.setIdUsuarioNormal(new Integer(usuarioService.numUsuariosNormales() + 1));
+		usuarioService.save(usuarioChanged);
+	    return "usuario/perfil";
+	}
   }
   
   @RequestMapping("/searchCode")
@@ -63,7 +84,7 @@ public class UsuarioController {
   
   @RequestMapping(value="/search", method = RequestMethod.POST)
   public String buscarCodigo(@ModelAttribute Post postChanged, ModelMap model) {
-	UsuarioNormal usuario = usuarioService.getById_usuario(postChanged.getVar1());
+	UsuarioNormal usuario = usuarioService.getById_usuario(Integer.parseInt(postChanged.getVar1()));
 	List<UsuarioNormal> usuarios = usuarioService.getAll();
 	if (!usuarios.contains(usuario)) {
 		return "redirect:/usuario?message=No se encuentra el Usuario.";
