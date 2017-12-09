@@ -8,15 +8,22 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 
 @Entity
-public class UsuarioNormal extends Usuario{
+public class UsuarioNormal extends Usuario{	
+	/*
 	@Id
 	@Column(length = 64, nullable = false)
-	private String idUsuarioNormal;
+	private String idUsuarioNormal;*/
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer idUsuarioNormal;
 	
 	//@Column(nullable = false)
 	private Boolean Estado;
@@ -52,16 +59,27 @@ public class UsuarioNormal extends Usuario{
 		this.playlists = playlists;
 	}
 
+	/*
 	public String getIdUsuarioNormal() {
 		return idUsuarioNormal;
 	}
 
 	public void setIdUsuarioNormal(String idUsuarioNormal) {
 		this.idUsuarioNormal = idUsuarioNormal;
-	}
+	}*/
+	
+	
 
 	public List<UsuarioNormal> getSigue() {
 		return Sigue;
+	}
+
+	public Integer getIdUsuarioNormal() {
+		return idUsuarioNormal;
+	}
+
+	public void setIdUsuarioNormal(Integer idUsuarioNormal) {
+		this.idUsuarioNormal = idUsuarioNormal;
 	}
 
 	public void setSigue(List<UsuarioNormal> sigue) {
