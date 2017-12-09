@@ -42,6 +42,12 @@ public class UsuarioController {
     model.addAttribute("title", "Nuevo Usuario");	
     return "usuario/editar";
   }
+  
+  @RequestMapping(value="/perfil", method = RequestMethod.POST)
+  public String perfilUsuario(@ModelAttribute UsuarioNormal usuarioChanged, ModelMap model){
+    model.addAttribute("usuario", usuarioChanged);
+    return "usuario/perfil";
+  }
 
   @RequestMapping(value = "/save", method = RequestMethod.POST)
   public String saveUsuario(@ModelAttribute UsuarioNormal usuarioChanged, ModelMap model) {
@@ -49,7 +55,7 @@ public class UsuarioController {
     return "redirect:/usuario?message=El Usuario se actualizo correctamente";
     // return listarUsuarios(model);
   }
-  
+
   @RequestMapping("/searchCode")
   public String paginaBuscarCodigo(ModelMap model) {
     return "usuario/searchUserCode";
@@ -64,5 +70,10 @@ public class UsuarioController {
 	}
 	model.addAttribute("usuario", usuario);
     return "usuario/editar";
+  }
+  
+  @RequestMapping("/register")
+  public String Register(ModelMap model) {
+	  return "usuario/register";
   }
 }
