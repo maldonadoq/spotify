@@ -9,6 +9,70 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style> 
+  	  
+  	input[type=text], input[type=password] {
+	    width: 100%;
+	    padding: 12px 20px;
+	    margin: 8px 0;
+	    display: inline-block;
+	    border: 1px solid #ccc;
+	    box-sizing: border-box;
+	}
+	
+	button {
+	    background-color: #161916;
+	    color: white;
+	    padding: 14px 20px;
+	    margin: 8px 0;
+	    border: none;
+	    cursor: pointer;
+	    width: 100%;
+	}
+
+	.cancelbtn {
+	    padding: 14px 20px;
+	    background-color: #606060;
+	}
+	
+	.cancelbtn,.signupbtn{
+		float:left;
+		width:50%
+	}
+	
+	.container {
+	    padding: 16px;
+	}
+	
+	.modal {
+	    display: none;
+	    position: fixed;
+	    z-index: 1;
+	    left: 0;
+	    top: 0;
+	    width: 100%;
+	    height: 100%;
+	    overflow: auto;
+	    background-color: rgb(0,0,0);
+	    background-color: rgba(0,0,0,0.4);
+	    padding-top: 5%;
+	}
+	
+	.modal-content {
+	    background-color: #d1d1d1;
+	    margin: 5% auto 15% auto;
+	    border: 1px solid #888;
+	    width: 90%
+	}
+	
+	.close {
+	    position: absolute;
+	    right: 35px;
+	    top: 15px;
+	    color: #000;
+	    font-size: 40px;
+	    font-weight: bold;
+	}
+  
     .navbar {
       margin-bottom: 0;
       border-radius: 0;
@@ -21,10 +85,6 @@
       color: #FFFFFF;
     }
 
-    .navbar-inverse {
-      color: red;
-    }
-    
 	.carousel-inner img {
 	  width: 100%;
 	  margin: auto;
@@ -63,7 +123,8 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Sign Up</button>
+		<button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Sign In</button>
       </ul>
     </div>
   </div>
@@ -107,6 +168,74 @@
       <span class="sr-only">Next</span>
     </a>
 </div>
+
+<div id="id02" class="modal">
+	<span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">x</span>
+	<form class="modal-content animate" action="/usuario/perfil" method="POST">
+		<div class="container">
+			<label><b>Correo: </b></label>
+			<input type="text" placeholder="Ingresa tu correo" name="Correo" required="required"/>
+		
+			<label><b>Password: </b></label>
+			<input type="password" placeholder="Ingresa tu password" name="idUsuarioNormal" required="required"/>
+
+      		<div class="clearfix">
+        		<button type="submit" class="signupbtn">Ingresar</button>
+        		<button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+      		</div>			
+		</div>
+	</form>
+</div>
+
+<script>
+var modal = document.getElementById('id02');
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+
+
+<div id="id01" class="modal">
+  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">x</span>
+  <form class="modal-content animate" action="/usuario/save" method="POST">
+    <div class="container">
+      <label><b>Nombre: </b></label>
+      <input type="text" placeholder="Ingresa tu nombre" name="Nombre" required="required" />
+      
+      <label><b>Apellido Paterno</b></label>
+      <input type="text" placeholder="Ingresa tu primer apellido" name="ApellidoPaterno" required="required"/>
+    	
+      <label><b>Apellido Materno</b></label>	
+      <input type="text" placeholder="Ingresa tu segundo apellido" name="ApellidoMaterno" required="required"/>	
+    	
+      <label><b>Correo: </b></label>
+      <input type="text" placeholder="Ingresa tu correo" name="Correo" required="required" />
+
+      <label><b>Password</b></label>
+      <input type="password" placeholder="Ingresa tu password" name="idUsuarioNormal" required="required" />
+
+      <input type="checkbox" checked="checked"> Recuerdame...
+      <p>Al suscribirte aceptas nuestros <a href="#">Terminos y condiciones</a>.</p>
+
+      <div class="clearfix">
+        <button type="submit" class="signupbtn">Registrarse</button>
+        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script>
+var modal = document.getElementById('id01');
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>  
   
 <div class="container text-center"><br>
   <div class="row">
