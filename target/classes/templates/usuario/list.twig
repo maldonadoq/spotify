@@ -3,38 +3,58 @@
   <head>
     <meta charset="utf-8">
     <title>Listado de Usuarios</title>
-
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  	
-
   </head>
   <body>
-  <h1> Usuarios </h1>
 
  {% if (message) %}
  <div style="color: green; border: 1px solid green; margin-bottom:10px;">{{message}}</div>
  {% endif %}
-
-	<table border="1">
-	  <tr>
-	    <th>ID</th>
+	
+<div class="container">
+  <h2>Usuarios</h2>
+  <p>Resusltado de la Busqueda</p>            
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
 	    <th>Apellidos</th>
 	    <th>Nombres</th>
 	    <th>Correo</th>
-	  </tr>
+      </tr>          
+    </thead>
+    
+    <tbody>
+      {% for usuario in usuarios %}
+		  <tr>
+		    <td><a href="/usuario/{{usuario.idUsuarioNormal}}">{{usuario.idUsuarioNormal}}</a></td>
+		    <td>{{usuario.ApellidoPaterno}} {{usuario.ApellidoMaterno}}</td>
+		    <td>{{usuario.Nombre}}</td>
+		    <td>{{usuario.Correo}}</td>
+		  </tr>
+		{% endfor %}
+    </tbody>
+  </table>
+  
+	<form class="form-horizontal" action="usuario/search" method="POST">	
+	<div class="form-group">
+      <label class="control-label col-sm-2" for="name">C&oacute;digo:</label>
+      <div class="col-sm-10">
+        <input class="form-control" id="name" placeholder="C&oacute;digo" name="var1">
+      </div>
+    </div>
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Buscar por C&oacute;digo</button>
+      </div>
+    </div>    
+   </form>
 
-{% for usuario in usuarios %}
-	  <tr>
-	    <td><a href="/usuario/{{usuario.idUsuarioNormal}}">{{usuario.idUsuarioNormal}}</a></td>
-	    <td>{{usuario.ApellidoPaterno}} {{usuario.ApellidoMaterno}}</td>
-	    <td>{{usuario.Nombre}}</td>
-	    <td>{{usuario.Correo}}</td>
-	  </tr>
-{% endfor %}
-	</table>
 	<br />	<a href="/usuario/new">Agregar Nuevo</a>
-	<br />	<a href="/usuario/searchCode">Buscar Por Codigo</a>
-	<br /> <input type="button" value="Atras" onclick="/spotify">
-  </body>
+	<br /> <input type="button" class="btn btn-danger" value="Back" onclick="history.back();" />  
+</div>	
+	
+</body>
 </html>
