@@ -55,7 +55,7 @@ public class UsuarioController {
     return "redirect:/usuario?message=El Usuario se actualizo correctamente";
     // return listarUsuarios(model);
   }
-
+  
   @RequestMapping("/searchCode")
   public String paginaBuscarCodigo(ModelMap model) {
     return "usuario/searchUserCode";

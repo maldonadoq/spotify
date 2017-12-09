@@ -29,4 +29,9 @@ public class CancionService{
 		  Album tmp = arepository.findAlbumName(name);	
 		  return repository.findByAlbum(tmp);
 	  }
+	  
+	  public List<Cancion> get100SongsPuntuation(String num){	
+		  //return repository.findBestPunt(Integer.parseInt(num));
+		  return repository.findAll();
+	  }
 }

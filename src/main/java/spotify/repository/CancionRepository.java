@@ -16,4 +16,7 @@ public interface CancionRepository extends CrudRepository<Cancion, String>{
 	
 	//fk_album
 	List<Cancion> findByAlbum(Album album);
+	
+	/*@Query("select c from Cancion order by c.Puntuacion desc limit 3")
+	List<Cancion> findBestPunt(Integer num);*/
 }
