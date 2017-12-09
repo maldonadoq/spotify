@@ -21,6 +21,9 @@ public abstract class Usuario{
 	@Column(length = 64, nullable = false)
 	protected String Correo;
 
+	
+//----------------------GETTER AND SETTER--------------------------
+
 	public String getNombre() {
 		return Nombre;
 	}

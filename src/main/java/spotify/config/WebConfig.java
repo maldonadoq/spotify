@@ -18,5 +18,4 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     jtwigViewResolver.setSuffix(".twig");
     return jtwigViewResolver;
   }
-
 }
