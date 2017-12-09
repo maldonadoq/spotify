@@ -4,7 +4,6 @@
   <title>Spotify</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="shortcut icon" type="image/x-icon" href="images/icono.png">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   
   <!-- Adding icon library -->
@@ -229,7 +228,7 @@ window.onclick = function(event) {
 
 <div id="id01" class="modal">
   <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">x</span>
-  <form class="modal-content animate" action="/usuario/save" method="POST">
+  <form class="modal-content animate" action="/usuario/create" method="POST">
     <div class="container">
       <label><b>Nombre: </b></label>
       <input type="text" placeholder="Ingresa tu nombre" name="Nombre" required="required" />

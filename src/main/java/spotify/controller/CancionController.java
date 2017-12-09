@@ -35,7 +35,21 @@ public class CancionController {
 		List<Cancion> canciones = cancionService.getMatchName(postChanged.getVar1());
 	    model.addAttribute("canciones", canciones);
 	    return "cancion/list";
-	  }	
+	  }
+	
+	@RequestMapping(value = "/playlist")
+	  public String matchCanciones(ModelMap model){
+		List<Cancion> canciones = cancionService.getAll();
+	    model.addAttribute("canciones", canciones);
+	    return "cancion/playlist";
+	  }
+	
+	@RequestMapping(value = "/puntuacion")
+	  public String SongPuntuation(@ModelAttribute Post postChanged, ModelMap model){
+		List<Cancion> canciones = cancionService.get100SongsPuntuation(postChanged.getVar1());
+	    model.addAttribute("canciones", canciones);
+	    return "cancion/list";
+	  }
 
 	@RequestMapping(value = "/album", method = RequestMethod.POST)
 	  public String albumCanciones(@ModelAttribute Post postChanged, ModelMap model) {

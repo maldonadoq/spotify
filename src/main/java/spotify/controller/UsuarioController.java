@@ -76,7 +76,7 @@ public class UsuarioController {
 	    return "usuario/perfil";
 	}
   }
-
+  
   @RequestMapping("/searchCode")
   public String paginaBuscarCodigo(ModelMap model) {
     return "usuario/searchUserCode";
