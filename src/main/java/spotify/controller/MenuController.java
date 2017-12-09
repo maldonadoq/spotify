@@ -14,14 +14,24 @@ public class MenuController {
 	  MenuService menuService;
 	
 	  @RequestMapping
-	  public String menu(ModelMap model,
+	  public String mostrarMenuPrincipal(ModelMap model,
 	      @RequestParam(value = "message", required = false) String message) {
 	    model.addAttribute("message", message);
 	    return "menu/menu";
 	  }
 	  
 	  @RequestMapping("/about")
-	  public String nuevoUsuario(ModelMap model) {	
+	  public String mostrarInformacion() {	
 	    return "menu/about";
+	  }
+	  
+	  @RequestMapping("/registro")
+	  public String registrarUsuarioNormal() {	
+	    return "menu/registro";
+	  }
+	  
+	  @RequestMapping("/login")
+	  public String iniciarSesion() {	
+	    return "menu/login";
 	  }
 }

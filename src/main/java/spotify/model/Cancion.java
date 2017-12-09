@@ -35,7 +35,7 @@ public class Cancion {
 	private Set<Playlist> playlists = new HashSet<Playlist>();
 	
 	@ManyToMany
-	@JoinTable(name="ancion_artista",
+	@JoinTable(name="cancion_artista",
 	joinColumns=@JoinColumn(name="id_cancion"),
 	inverseJoinColumns=@JoinColumn(name="id_artista"))
 	private Set<Artista> artistas = new HashSet<Artista>();
