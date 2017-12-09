@@ -40,24 +40,24 @@
 <body>
 
 <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" href="http://localhost:8080/spotify">Spotify</a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li><a href="#" class="text-dark">About</a></li>
-        <li><a href="#" class="text-dark">Projects</a></li>
-        <li><a href="#" class="text-dark">Contact</a></li>
-      </ul>
-    </div>
-  </div>
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="http://localhost:8080/spotify">Spotify</a>
+		</div>
+		<ul class="nav navbar-nav">
+			<li class="active"><a href="http://localhost:8080/spotify"><span class="glyphicon glyphicon-home"></span></a></li>
+			<li><a href="/spotify/about"><span class="glyphicon glyphicon-envelope"></span></a></li>
+	  		<li><a href="#"><span class="glyphicon glyphicon-folder-open"></span></a></li>
+        	<li><a href="#"><span class="glyphicon glyphicon-comment"></span></a></li>
+      		<li><a href="/usuario"><span class="glyphicon glyphicon-search"></span></a></li>     	
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			<li><a onclick="document.getElementById('id01').style.display='block'" style="width:auto;"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+			<li><a onclick="document.getElementById('id02').style.display='block'" style="width:auto;"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+		</ul>
+	</div>
 </nav>
+
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
