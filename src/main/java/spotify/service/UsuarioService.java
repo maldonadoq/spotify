@@ -12,11 +12,31 @@ public class UsuarioService {
   @Autowired
   UsuarioRepository repository;
 
+  public boolean existeUsuario(String correo) {
+	  List<UsuarioNormal> usuarios = repository.findByCorreo(correo);
+	  if (usuarios.size() >= 1)
+		  return true;
+	  else
+		  return false;
+  }
+  
+  public boolean usuarioCorrecto(String correo, String password) {
+	  List<UsuarioNormal> usuarios = repository.findByCorreo(correo);
+	  if (usuarios.size() == 1 && usuarios.get(0).getPassword() == password)
+		  return true;
+	  else
+		  return false;
+  }
+  
+  public int numUsuariosNormales() {
+	  return repository.numeroDeUsuariosNormales();
+  }
+  
   public List<UsuarioNormal> getAll() {
     return repository.findAll();
   }
 
-  public UsuarioNormal getById_usuario(String Id_usuario) {
+  public UsuarioNormal getById_usuario(Integer Id_usuario) {
     return repository.findOne(Id_usuario);
   }
 
@@ -33,4 +53,5 @@ public class UsuarioService {
 
     return repository.save(usuario);
   }
+    
 }

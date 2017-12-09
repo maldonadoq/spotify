@@ -23,7 +23,7 @@ public class UsuarioRest {
 
     @RequestMapping("/{idUsuarioNormal}.json")
     @ResponseBody
-    public UsuarioNormal usuarioNormal(@PathVariable("idUsuarioNormal") String Id_usuario) {
+    public UsuarioNormal usuarioNormal(@PathVariable("idUsuarioNormal") Integer Id_usuario) {
         UsuarioNormal usuarioNormal = usuarioService.getById_usuario(Id_usuario);
         return usuarioNormal;
     }
