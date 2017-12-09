@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Canciones</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+ {% if (message) %}
+ <div style="color: green; border: 1px solid green; margin-bottom:10px;">{{message}}</div>
+ {% endif %}
+
+<div class="container">
+  <h2>Canciones</h2>
+  <p>Resusltado de la Busqueda</p>            
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+	    <th>Nombre</th>
+	    <th>Fecha</th>
+	    <th>Puntuacion</th>
+      </tr>          
+    </thead>
+    
+    <tbody>
+      {% for cancion in canciones %}
+	  <tr>
+	    <td>{{cancion.Id_cancion}}</a></td>
+	    <td>{{cancion.Nombre}}</td>
+	    <td>{{cancion.Fecha}}</td>
+	    <td>{{cancion.Puntuacion}}</td>
+	  </tr>
+{% endfor %}
+    </tbody>
+  </table>
+  
+	<form class="form-horizontal" action="/cancion/search" method="POST">	
+	<div class="form-group">
+      <label class="control-label col-sm-2" for="name">Nombre de Canci&oacute;n:</label>
+      <div class="col-sm-10">
+        <input class="form-control" id="name" placeholder="Nombre de la Canci&oacute;n" name="var1">
+      </div>
+    </div>
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Buscar por Nombre</button>
+      </div>
+    </div>    
+   </form>
+   
+   <form class="form-horizontal" action="/cancion/album" method="POST">	
+	<div class="form-group">
+      <label class="control-label col-sm-2" for="name">Nombre del Alb&uacute;m:</label>
+      <div class="col-sm-10">
+        <input class="form-control" id="name" placeholder="Nombre del Alb&uacute;m" name="var1">
+      </div>
+    </div>
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Buscar por Alb&uacute;m</button>
+      </div>
+    </div>    
+   </form>
+
+	<br /> <input type="button" class="btn btn-danger" value="Back" onclick="history.back();" />  
+</div>
+		
+</body>
+</html>
