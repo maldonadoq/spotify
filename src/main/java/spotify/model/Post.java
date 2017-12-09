@@ -36,5 +36,4 @@ public class Post{
 	public void setVar4(String var4) {
 		this.var4 = var4;
 	}
-
 }

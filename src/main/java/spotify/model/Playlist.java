@@ -1,7 +1,6 @@
 package spotify.model;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -28,9 +27,6 @@ public class Playlist {
 	
 	@ManyToMany(mappedBy="playlists")
 	private Set<Cancion> canciones = new HashSet<Cancion>();
-	
-	
-	
 	
 	public Set<Cancion> getCanciones() {
 		return canciones;

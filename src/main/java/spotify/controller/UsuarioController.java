@@ -70,4 +70,5 @@ public class UsuarioController {
   public String Register(ModelMap model) {
 	  return "usuario/register";
   }
+
 }

@@ -14,19 +14,19 @@ import spotify.repository.CancionRepository;
 public class CancionService{
 	@Autowired
 	CancionRepository repository;
+	@Autowired
 	AlbumRepository arepository;
 
-	  public List<Cancion> getAll() {
+	  public List<Cancion> getAll() {	
 		  return repository.findAll();
 	  }
-	  
 	  
 	  public List<Cancion> getMatchName(String name) {
 		  return repository.findMatchName(name);
 	  }
 	  
 	  public List<Cancion> getAlbumName(String name){
-		  Album tmp = arepository.findAlbumName(name);
-		  return repository.findAlbumCodigo(tmp.nombreAlbum);
+		  Album tmp = arepository.findAlbumName(name);	
+		  return repository.findByAlbum(tmp);
 	  }
 }
